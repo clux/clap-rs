@@ -31,8 +31,8 @@ pub struct Parser<'a, 'b>
     where 'a: 'b
 {
     required: Vec<&'b str>,
-    short_list: Vec<char>,
-    long_list: Vec<&'b str>,
+    pub short_list: Vec<char>,
+    pub long_list: Vec<&'b str>,
     blacklist: Vec<&'b str>,
     // A list of possible flags
     flags: Vec<FlagBuilder<'a, 'b>>,

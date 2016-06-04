@@ -407,6 +407,8 @@ extern crate strsim;
 extern crate ansi_term;
 #[cfg(feature = "yaml")]
 extern crate yaml_rust;
+#[cfg(feature = "completion")]
+extern crate liquid;
 #[cfg(all(feature = "wrap_help", not(target_os = "windows")))]
 extern crate libc;
 #[cfg(all(feature = "wrap_help", not(target_os = "windows")))]

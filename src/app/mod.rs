@@ -5,6 +5,8 @@ mod macros;
 mod parser;
 mod meta;
 mod help;
+#[cfg(feature = "completion")]
+mod completion;
 
 pub use self::settings::AppSettings;
 
@@ -21,6 +23,9 @@ use std::fmt;
 #[cfg(feature = "yaml")]
 use yaml_rust::Yaml;
 use vec_map::VecMap;
+
+#[cfg(feature = "completion")]
+use app::completion::gencomp;
 
 use args::{AnyArg, Arg, ArgGroup, ArgMatcher, ArgMatches, ArgSettings};
 use app::parser::Parser;
@@ -1008,6 +1013,12 @@ impl<'a, 'b> App<'a, 'b> {
         }
 
         e.exit()
+    }
+
+    /// Generates a completion string that can be piped to a file
+    #[cfg(feature = "completion")]
+    pub fn completions(self) -> String {
+        gencomp(&self)
     }
 }
 
